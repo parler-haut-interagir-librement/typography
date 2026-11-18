@@ -4,6 +4,23 @@ All notable changes to `phil/typography` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
+## 0.2.0-alpha - 2026-11-18
+
+The next version is 0.2.0-alpha: a text longer than 1 MiB, fixed before, is refused by default.
+
+### Added
+
+- `Exception\InputTooLarge`, thrown by `Typographer::fix()`, `fixDocument()`, `fixText()` and `Typographers::fixHtml()`
+  for a text longer than the ceiling, before it is parsed; `$bytes` and `$limit` say both lengths, and `check()`
+  refuses an input above a ceiling.
+- `maxBytes`, the ceiling of a text in bytes, on `Typographer`, `Typographer::for()` and `Typographers`, which gives it
+  to each typographer it builds; `Typographer::DEFAULT_MAX_BYTES`, 1 MiB.
+- The section [The ceiling of a text](doc/html.md#the-ceiling-of-a-text).
+
+### Changed
+
+- Every entry point refuses a text longer than 1 MiB unless configured.
+
 ## 0.1.1-alpha - 2026-11-17
 
 The next version is 0.1.1-alpha: documentation only.
